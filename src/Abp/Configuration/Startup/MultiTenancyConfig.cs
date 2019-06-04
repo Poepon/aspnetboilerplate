@@ -14,11 +14,20 @@ namespace Abp.Configuration.Startup
         /// </summary>
         public bool IsEnabled { get; set; }
 
-        public ITypeList<ITenantResolveContributer> Resolvers { get; }
+        /// <summary>
+        /// Ignore feature check for host users
+        /// Default value: false.
+        /// </summary>
+        public bool IgnoreFeatureCheckForHostUsers { get; set; }
+
+        public ITypeList<ITenantResolveContributor> Resolvers { get; }
+
+        public string TenantIdResolveKey { get; set; }
 
         public MultiTenancyConfig()
         {
-            Resolvers = new TypeList<ITenantResolveContributer>();
+            Resolvers = new TypeList<ITenantResolveContributor>();
+            TenantIdResolveKey = "Abp.TenantId";
         }
     }
 }
